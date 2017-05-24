@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.d(TAG, "onPostExecute: parameter is " + s);
+            ParseApplications parseApplications = new ParseApplications();
+            parseApplications.parse(s);
         }
 
         @Override
@@ -69,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                 return xmlResult.toString();
             } catch (MalformedURLException e) {
                 Log.e(TAG, "downloadXML: Invalid URL " + e.getMessage());
-
             } catch (IOException e) {
                 Log.e(TAG, "downloadXML: IO Exception Reading Data " + e.getMessage());
             } catch (SecurityException e) {
